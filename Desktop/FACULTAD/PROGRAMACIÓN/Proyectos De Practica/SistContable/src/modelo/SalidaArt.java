@@ -6,17 +6,28 @@
 package modelo;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @author MAYFER
  */
+@Entity
 public class SalidaArt extends EntidadBasica implements Serializable{
-    private long salidaId;
-    private long articuloId;
+
+    @Column
     private int cantidad;
+    @Column
     private double precioTotal;
+    @ManyToOne(cascade=CascadeType.PERSIST, optional = false)
+    @JoinColumn(name="salidaId")
     private Salida salida;
+    @ManyToOne(cascade=CascadeType.PERSIST, optional = false)
+    @JoinColumn(name="articuloId")
     private Articulo articulo;
 
     public SalidaArt() {
@@ -28,22 +39,6 @@ public class SalidaArt extends EntidadBasica implements Serializable{
 
     public void setArticulo(Articulo articulo) {
         this.articulo = articulo;
-    }
-
-    public long getSalidaId() {
-        return salidaId;
-    }
-
-    public void setSalidaId(long salidaId) {
-        this.salidaId = salidaId;
-    }
-
-    public long getArticuloId() {
-        return articuloId;
-    }
-
-    public void setArticuloId(long articuloId) {
-        this.articuloId = articuloId;
     }
 
     public int getCantidad() {

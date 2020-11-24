@@ -6,40 +6,35 @@
 package modelo;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @author MAYFER
  */
+@Entity
 public class EntradaArt extends EntidadBasica implements Serializable {
 
-    private long entradaId;//FK
-    private long articuloId; //FK
+    @Column
     private int cantidad;
+    @Column
     private int existencia;
+    @Column
     private double costoUnit;
+    @Column
     private double precioUnit;
+    @ManyToOne(cascade = CascadeType.PERSIST, optional = false)
+    @JoinColumn(name = "entradaId")
     private Entrada entrada;
+    @ManyToOne(cascade = CascadeType.PERSIST, optional = false)
+    @JoinColumn(name = "articuloId")
     private Articulo articulo;
-            
 
     public EntradaArt() {
-    }
-
-    public long getEntradaId() {
-        return entradaId;
-    }
-
-    public void setEntradaId(long entradaId) {
-        this.entradaId = entradaId;
-    }
-
-    public long getArticuloId() {
-        return articuloId;
-    }
-
-    public void setArticuloId(long articuloId) {
-        this.articuloId = articuloId;
     }
 
     public int getCantidad() {

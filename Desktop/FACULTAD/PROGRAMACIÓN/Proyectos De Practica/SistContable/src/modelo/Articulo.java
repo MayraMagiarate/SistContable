@@ -6,24 +6,31 @@
 package modelo;
 
 import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
 
 /**
  *
  * @author MAYFER
  */
-public class Articulo extends EntidadBasica implements Serializable{
-   
+@Entity
+public class Articulo extends EntidadBasica implements Serializable {
+
+    @Column(unique = true)
     private int cod;
+    @Column
     private String nombre;
+    @Column
     private String descrip;
+    @Column
     private int stock;
+    @Column
     private int stockMin;
-    private int strockMax;
+    @Column
+    private int stockMax;
 
-   public Articulo() {
+    public Articulo() {
     }
-
-   
 
     public int getCod() {
         return cod;
@@ -65,14 +72,12 @@ public class Articulo extends EntidadBasica implements Serializable{
         this.stockMin = stockMin;
     }
 
-    public int getStrockMax() {
-        return strockMax;
+    public int getStockMax() {
+        return stockMax;
     }
 
-    public void setStrockMax(int strockMax) {
-        this.strockMax = strockMax;
+    public void setStockMax(int strockMax) {
+        this.stockMax = strockMax;
     }
-    
 
-    
 }
