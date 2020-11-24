@@ -9,6 +9,7 @@ import gestores.GestorArticulo;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import modelo.Articulo;
 
 /**
@@ -26,7 +27,7 @@ public class SistContable {
             ga.IniciarTransaccion();
             ga.EjecutarTransaccion();
         } catch (Exception ex) {
-            // aca mostrar error y no dejar continuar la aplicacion
+            JOptionPane.showMessageDialog(null, "No se puede iniciar la aplicacion: \n" + ex.getMessage());
         }
         
     }
