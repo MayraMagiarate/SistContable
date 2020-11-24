@@ -35,7 +35,6 @@ public class VistaArticulo extends javax.swing.JFrame {
         lblStockMin = new javax.swing.JLabel();
         lblStockMax = new javax.swing.JLabel();
         lblDescripcion = new javax.swing.JLabel();
-        cboxCodigos = new javax.swing.JComboBox<>();
         txtNombre = new javax.swing.JTextField();
         txtDescrip = new javax.swing.JTextField();
         txtStockMin = new javax.swing.JTextField();
@@ -45,6 +44,7 @@ public class VistaArticulo extends javax.swing.JFrame {
         btnModificar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        txtCodigo = new javax.swing.JTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -83,10 +83,6 @@ public class VistaArticulo extends javax.swing.JFrame {
         lblDescripcion.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         lblDescripcion.setForeground(new java.awt.Color(51, 0, 102));
         lblDescripcion.setText("Descripción:");
-
-        cboxCodigos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        txtStockMin.setBackground(new java.awt.Color(51, 51, 51));
 
         tListaArticulos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -140,20 +136,16 @@ public class VistaArticulo extends javax.swing.JFrame {
                             .addComponent(lblStockMax))
                         .addGap(32, 32, 32)
                         .addGroup(pnlArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlArticuloLayout.createSequentialGroup()
-                                .addComponent(cboxCodigos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
-                                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlArticuloLayout.createSequentialGroup()
-                                .addGroup(pnlArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                                    .addComponent(txtStockMax, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                                    .addComponent(txtStockMin)
-                                    .addComponent(txtDescrip))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(pnlArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                            .addComponent(txtStockMax, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                            .addComponent(txtStockMin, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                            .addComponent(txtDescrip, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))
+                        .addGap(40, 40, 40)
+                        .addGroup(pnlArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnModificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         pnlArticuloLayout.setVerticalGroup(
@@ -166,8 +158,8 @@ public class VistaArticulo extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlArticuloLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(pnlArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cboxCodigos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblCodigo))))
+                            .addComponent(lblCodigo)
+                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlArticuloLayout.createSequentialGroup()
@@ -259,7 +251,6 @@ public class VistaArticulo extends javax.swing.JFrame {
     public javax.swing.JButton btnAgregar;
     public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnModificar;
-    public javax.swing.JComboBox<String> cboxCodigos;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
@@ -270,6 +261,7 @@ public class VistaArticulo extends javax.swing.JFrame {
     public javax.swing.JLabel lblStockMin;
     public javax.swing.JPanel pnlArticulo;
     public javax.swing.JTable tListaArticulos;
+    public javax.swing.JTextField txtCodigo;
     public javax.swing.JTextField txtDescrip;
     public javax.swing.JTextField txtNombre;
     public javax.swing.JTextField txtStockMax;

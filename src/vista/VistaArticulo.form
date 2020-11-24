@@ -91,24 +91,17 @@
                           </Group>
                           <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="cboxCodigos" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="123" max="32767" attributes="0"/>
-                                  <Component id="btnModificar" min="-2" pref="139" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtNombre" pref="148" max="32767" attributes="0"/>
-                                      <Component id="txtStockMax" alignment="0" pref="64" max="32767" attributes="0"/>
-                                      <Component id="txtStockMin" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtDescrip" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btnAgregar" alignment="1" min="-2" pref="139" max="-2" attributes="0"/>
-                                      <Component id="btnEliminar" alignment="1" min="-2" pref="139" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="txtCodigo" pref="148" max="32767" attributes="0"/>
+                              <Component id="txtNombre" alignment="1" pref="148" max="32767" attributes="0"/>
+                              <Component id="txtStockMax" alignment="1" pref="148" max="32767" attributes="0"/>
+                              <Component id="txtStockMin" alignment="1" pref="148" max="32767" attributes="0"/>
+                              <Component id="txtDescrip" alignment="1" pref="148" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="btnAgregar" alignment="1" min="-2" pref="139" max="-2" attributes="0"/>
+                              <Component id="btnEliminar" alignment="1" min="-2" pref="139" max="-2" attributes="0"/>
+                              <Component id="btnModificar" alignment="1" min="-2" pref="139" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -127,8 +120,8 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="cboxCodigos" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -243,22 +236,6 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cboxCodigos">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
-        </Component>
         <Component class="javax.swing.JTextField" name="txtNombre">
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -270,11 +247,6 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="txtStockMin">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="33" green="33" red="33" type="rgb"/>
-            </Property>
-          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
@@ -330,6 +302,11 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtCodigo">
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
