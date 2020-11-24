@@ -23,21 +23,10 @@ public class SistContable {
     public static void main(String[] args) {
         try {
             GestorArticulo ga = new GestorArticulo();
-            /*ga.IniciarTransaccion();
-            Articulo arti = new Articulo();
-            arti.setCod(333);
-            arti.setNombre("Ladrilli");
-            arti.setDescrip("Que se yi");
-            arti.setStockMin(1000);
-            arti.setStockMax(100000);
-            ga.Guardar(arti);
-            ga.EjecutarTransaccion();*/
-            ArrayList<Articulo> artis = ga.BuscarPorFiltroConOrden("cod >= 333", "descrip", false);
-            if (artis.size() > 0) {
-                System.out.println(artis.size());
-            }
+            ga.IniciarTransaccion();
+            ga.EjecutarTransaccion();
         } catch (Exception ex) {
-            Logger.getLogger(SistContable.class.getName()).log(Level.SEVERE, null, ex);
+            // aca mostrar error y no dejar continuar la aplicacion
         }
         
     }
