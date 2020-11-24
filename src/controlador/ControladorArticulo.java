@@ -48,10 +48,19 @@ public class ControladorArticulo implements ActionListener {
             if (e.getSource().equals(this.vista.btnAgregar)) {
                 verificarCampos();
                 setearModelo();
-                guardarArticulo();
-                limpiarArticulo();
+                if (articulo.getId() > 0) {
+                    modificarArticulo();
+                } else {
+                    guardarArticulo();
+                }
+                limpiarCamposArticulo();
                 cargarArticulosEnTabla();
+            } else if (e.getSource().equals(this.vista.btnModificar)) {
+                cargarArticuloSeleccionadoParaModificar();
+            } else if (e.getSource().equals(this.vista.btnEliminar)) {
+                eliminarArticuloSeleccionado();
             }
+            
         } catch (Exception ex) {
             try {
                 gestorArticulo.DeshacerTransaccion();
@@ -101,15 +110,42 @@ public class ControladorArticulo implements ActionListener {
         }
     }
     
+    private void cargarArticuloSeleccionadoParaModificar() throws Exception {
+        int fila = vista.tListaArticulos.getSelectedRow();
+        if (fila >= 0) {
+            String codigo = vista.tListaArticulos.getModel().getValueAt(fila, 0).toString();
+            Articulo arti = gestorArticulo.BuscarPorFiltro("cod = " + codigo).get(0);
+            this.articulo = arti;
+            cargarCamposArticulo();
+        } else {
+            throw new Exception("Debe seleccionar un artículo que desee modificar");
+        }
+    }
+    
+    private void eliminarArticuloSeleccionado() throws Exception {
+        int fila = vista.tListaArticulos.getSelectedRow();
+        if (fila >= 0) {
+            String codigo = vista.tListaArticulos.getModel().getValueAt(fila, 0).toString();
+            Articulo arti = gestorArticulo.BuscarPorFiltro("cod = " + codigo).get(0);
+            this.articulo = arti;
+            eliminarArticulo();
+            cargarArticulosEnTabla();
+        } else {
+            throw new Exception("Debe seleccionar un artículo que desee eliminar");
+        }
+    }
+    
     private void setearModelo() throws Exception {
         articulo.setCod(Integer.parseInt(vista.txtCodigo.getText()));
-        if (existeArticuloConCodigo(articulo.getCod())) {
-            throw new Exception("Ya existe un artículo con el código ingresado");
-        }
         articulo.setNombre(vista.txtNombre.getText());
         articulo.setDescrip(vista.txtDescrip.getText());
         articulo.setStockMin(Integer.parseInt(vista.txtStockMin.getText()));
         articulo.setStockMax(Integer.parseInt(vista.txtStockMax.getText()));
+        if (articulo.getId() == 0) {
+            if (existeArticuloConCodigo(articulo.getCod())) {
+            throw new Exception("Ya existe un artículo con el código ingresado");
+        }
+        }
         if (articulo.getStockMin() >= articulo.getStockMax()) {
             throw new Exception("El stock mínimo no puede ser mayor al stock máximo");
         }
@@ -164,12 +200,20 @@ public class ControladorArticulo implements ActionListener {
         }
     }
     
-    private void limpiarArticulo() {
+    private void limpiarCamposArticulo() {
         articulo = new Articulo();
         vista.txtCodigo.setText("");
         vista.txtNombre.setText("");
         vista.txtDescrip.setText("");
         vista.txtStockMin.setText("");
         vista.txtStockMax.setText("");
+    }
+    
+    private void cargarCamposArticulo() {
+        vista.txtCodigo.setText(String.valueOf(articulo.getCod()));
+        vista.txtNombre.setText(articulo.getNombre());
+        vista.txtDescrip.setText(articulo.getDescrip());
+        vista.txtStockMin.setText(String.valueOf(articulo.getStockMin()));
+        vista.txtStockMax.setText(String.valueOf(articulo.getStockMax()));
     }
 }
