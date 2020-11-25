@@ -25,8 +25,6 @@ public class EntradaArt extends EntidadBasica implements Serializable {
     private int existencia;
     @Column
     private double costoUnit;
-    @Column
-    private double precioUnit;
     @ManyToOne(cascade = CascadeType.PERSIST, optional = false)
     @JoinColumn(name = "entradaId")
     private Entrada entrada;
@@ -59,14 +57,6 @@ public class EntradaArt extends EntidadBasica implements Serializable {
 
     public void setCostoUnit(double costoUnit) {
         this.costoUnit = costoUnit;
-    }
-
-    public double getPrecioUnit() {
-        return precioUnit;
-    }
-
-    public void setPrecioUnit(double precioUnit) {
-        this.precioUnit = precioUnit;
     }
 
     public Entrada getEntrada() {

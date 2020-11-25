@@ -6,13 +6,16 @@
 package sistcontable;
 
 import controlador.ControladorArticulo;
+import controlador.ControladorEntrada;
 import gestores.GestorArticulo;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.Articulo;
+import modelo.Entrada;
 import vista.VistaArticulo;
+import vista.VistaEntradas;
 
 /**
  *
@@ -28,9 +31,13 @@ public class SistContable {
             GestorArticulo ga = new GestorArticulo();
             ga.IniciarTransaccion();
             ga.EjecutarTransaccion();
-            VistaArticulo vista = new VistaArticulo();
-            Articulo articulo = new Articulo();
-            ControladorArticulo controlador = new ControladorArticulo(vista, articulo);
+            /*VistaArticulo vista = new VistaArticulo();
+            Articulo modelo = new Articulo();
+            ControladorArticulo controlador = new ControladorArticulo(vista, modelo);
+            controlador.iniciarVista();*/
+            VistaEntradas vista = new VistaEntradas();
+            Entrada modelo = new Entrada();
+            ControladorEntrada controlador = new ControladorEntrada(vista, modelo);
             controlador.iniciarVista();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "No se puede iniciar la aplicacion: \n" + ex.getMessage());
