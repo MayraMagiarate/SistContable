@@ -34,7 +34,6 @@ public class VistaEntradas extends javax.swing.JFrame {
         lblStockMax = new javax.swing.JLabel();
         lblDescripcion = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        txtDescrip = new javax.swing.JTextField();
         txtStockMin = new javax.swing.JTextField();
         txtStockMax = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -46,10 +45,11 @@ public class VistaEntradas extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         lblStockMax1 = new javax.swing.JLabel();
-        lblStockMax2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Registro de Ingreso Articulos");
 
         pnlArticulo.setBackground(new java.awt.Color(255, 255, 204));
         pnlArticulo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Entradas", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Felix Titling", 1, 24), new java.awt.Color(51, 0, 102))); // NOI18N
@@ -117,10 +117,6 @@ public class VistaEntradas extends javax.swing.JFrame {
         lblStockMax1.setForeground(new java.awt.Color(51, 0, 102));
         lblStockMax1.setText("Costo unit.");
 
-        lblStockMax2.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
-        lblStockMax2.setForeground(new java.awt.Color(51, 0, 102));
-        lblStockMax2.setText("Precio unit.");
-
         jButton1.setText("Guardar Todo");
 
         javax.swing.GroupLayout pnlArticuloLayout = new javax.swing.GroupLayout(pnlArticulo);
@@ -141,16 +137,15 @@ public class VistaEntradas extends javax.swing.JFrame {
                             .addComponent(lblNombre)
                             .addComponent(lblDescripcion)
                             .addComponent(lblStockMin)
-                            .addComponent(lblStockMax)
-                            .addComponent(lblStockMax2))
-                        .addGap(38, 38, 38)
+                            .addComponent(lblStockMax))
+                        .addGap(40, 40, 40)
                         .addGroup(pnlArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                             .addComponent(txtStockMax, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                             .addComponent(txtStockMin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTextField1)
-                            .addComponent(txtDescrip))
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(40, 40, 40)
                         .addGroup(pnlArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,12 +160,17 @@ public class VistaEntradas extends javax.swing.JFrame {
             .addGroup(pnlArticuloLayout.createSequentialGroup()
                 .addGroup(pnlArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlArticuloLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnlArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlArticuloLayout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlArticuloLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblCodigo)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlArticuloLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblCodigo)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21)))
                 .addGroup(pnlArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlArticuloLayout.createSequentialGroup()
                         .addGroup(pnlArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -197,11 +197,7 @@ public class VistaEntradas extends javax.swing.JFrame {
                 .addGroup(pnlArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlArticuloLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16)
-                        .addGroup(pnlArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDescrip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblStockMax2)))
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlArticuloLayout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(pnlArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -210,7 +206,7 @@ public class VistaEntradas extends javax.swing.JFrame {
                     .addGroup(pnlArticuloLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(lblStockMax1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -270,6 +266,7 @@ public class VistaEntradas extends javax.swing.JFrame {
     public javax.swing.JButton btnModificar;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
@@ -278,11 +275,9 @@ public class VistaEntradas extends javax.swing.JFrame {
     public javax.swing.JLabel lblNombre;
     public javax.swing.JLabel lblStockMax;
     public javax.swing.JLabel lblStockMax1;
-    public javax.swing.JLabel lblStockMax2;
     public javax.swing.JLabel lblStockMin;
     public javax.swing.JPanel pnlArticulo;
     public javax.swing.JTable tListaArticulos;
-    public javax.swing.JTextField txtDescrip;
     public javax.swing.JTextField txtNombre;
     public javax.swing.JTextField txtStockMax;
     public javax.swing.JTextField txtStockMin;

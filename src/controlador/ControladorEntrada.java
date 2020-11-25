@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import modelo.Articulo;
 import modelo.Entrada;
 import modelo.EntradaArt;
+import vista.VistaEntradas;
 
 /**
  *
@@ -25,12 +26,14 @@ import modelo.EntradaArt;
 public class ControladorEntrada implements ActionListener{
     // private VistaEntrada vista;
     private Entrada entrada;
+    private VistaEntradas vista;
     private GestorEntrada gestorEntrada;
     private GestorEntradaArt gestorEntradaArt;
     
-    public ControladorEntrada(/*VistaEntrada vista, */Entrada entrada){
+    public ControladorEntrada(VistaEntradas vista,Entrada entrada){
         this.entrada = entrada;
-        
+        this.vista =vista;
+         this.vista.setVisible(true);
         this.gestorEntrada = new GestorEntrada(); // aca ya se instancio el gestor (podemos utilizarlo en toda la clase)
         this.gestorEntradaArt = new GestorEntradaArt();
     }

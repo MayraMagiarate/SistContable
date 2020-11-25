@@ -59,7 +59,8 @@ public class VistaArticulo extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cargar Articulo");
 
         pnlArticulo.setBackground(new java.awt.Color(255, 204, 204));
         pnlArticulo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Artículo", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Felix Titling", 1, 24), new java.awt.Color(51, 0, 102))); // NOI18N

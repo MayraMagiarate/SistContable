@@ -1,5 +1,4 @@
 package gestores;
-
 import java.util.List;
 import modelo.EntidadBasica;
 import org.hibernate.Criteria;

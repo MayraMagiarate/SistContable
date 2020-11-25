@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import modelo.Articulo;
 import modelo.Salida;
 import modelo.SalidaArt;
+import vista.VistaVentas;
 
 /**
  *
@@ -25,14 +26,17 @@ import modelo.SalidaArt;
 public class ControladorSalida implements ActionListener{
     // private VistaEntrada vista;
     private Salida salida;
+    private VistaVentas vista;
     private GestorSalida gestorSalida;
     private GestorSalidaArt gestorSalidaArt;
     
-    public ControladorSalida(/*VistaSalida vista, */Salida salida) {
+    public ControladorSalida(VistaVentas vista,Salida salida) {
         this.salida = salida;
-        
+        this.vista = vista;
+         this.vista.setVisible(true);
         this.gestorSalida = new GestorSalida();
         this.gestorSalidaArt = new GestorSalidaArt();
+        
     }
     
     @Override

@@ -72,7 +72,7 @@ public class ControladorArticulo implements ActionListener {
     }
     
     private boolean existeArticuloConCodigo(int cod) throws Exception {
-        ArrayList<Articulo> artis = gestorArticulo.BuscarPorFiltro("cod = " + Integer.toString(cod));
+        ArrayList<Articulo> artis = gestorArticulo.BuscarPorFiltro("cod = " + Integer.toString(cod)); // SELECT * FROM Articulo WHERE cod= (un entero)
         if (artis.isEmpty()) {
             return false;
         } else {
