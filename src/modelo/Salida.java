@@ -6,6 +6,7 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import javax.persistence.Basic;
@@ -31,6 +32,7 @@ public class Salida extends EntidadBasica implements Serializable{
     private List<SalidaArt> ventas;
 
     public Salida() {
+        this.ventas = new ArrayList<>();
     }
 
     public Calendar getFecha() {

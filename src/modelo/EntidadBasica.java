@@ -20,7 +20,7 @@ public abstract class EntidadBasica implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;//como Primary key
+    protected long id;//como Primary key
 
     public long getId() {
         return id;

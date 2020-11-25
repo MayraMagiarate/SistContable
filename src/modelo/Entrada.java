@@ -6,9 +6,11 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -28,10 +30,11 @@ public class Entrada extends EntidadBasica implements Serializable {
     private Calendar fecha;
     @Column
     private String facturaProveedor;
-    @OneToMany(mappedBy = "entrada")
+    @OneToMany(mappedBy = "entrada", cascade = CascadeType.ALL)
     private List<EntradaArt> entradas;
 
     public Entrada() {
+        this.entradas = new ArrayList<>();
     }
 
     public List<EntradaArt> getEntradas() {

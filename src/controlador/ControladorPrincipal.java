@@ -7,6 +7,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import modelo.Articulo;
 import modelo.Entrada;
 import modelo.EntradaArt;
@@ -22,44 +23,46 @@ import vista.VistaVentas;
  * @author MAYFER
  */
 public class ControladorPrincipal implements ActionListener {
-    private VistaPrincipal vistaP=new VistaPrincipal();
-     public ControladorPrincipal(VistaPrincipal vistaP) {
+
+    private VistaPrincipal vistaP = new VistaPrincipal();
+
+    public ControladorPrincipal(VistaPrincipal vistaP) {
         this.vistaP = vistaP;
         this.vistaP.setVisible(true);
 
         this.vistaP.btnVentas.addActionListener(this);
         this.vistaP.btnIngresoMerca.addActionListener(this);
         this.vistaP.btnIngresoArtNuevo.addActionListener(this);
-       
-        
-       
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(this.vistaP.btnVentas)) {
-          VistaVentas vv = new VistaVentas();
-           Salida venta = new Salida();
-            ControladorSalida controlSalida = new ControladorSalida(vv,venta);
+        try {
+            if (e.getSource().equals(this.vistaP.btnVentas)) {
+            VistaVentas vv = new VistaVentas();
+            Salida venta = new Salida();
+            ControladorSalida controlSalida = new ControladorSalida(vv, venta);
+            //controlSalida.in
 
-        }
-        else if (e.getSource().equals(this.vistaP.btnIngresoMerca)) {
-             VistaEntradas vi = new VistaEntradas();
+        } else if (e.getSource().equals(this.vistaP.btnIngresoMerca)) {
+            VistaEntradas vi = new VistaEntradas();
             Entrada ea = new Entrada();
             ControladorEntrada controlEntradas = new ControladorEntrada(vi, ea);
+            controlEntradas.iniciarVista();
 
-        }
-        else if (e.getSource().equals(this.vistaP.btnIngresoArtNuevo)) {
-           VistaArticulo va = new VistaArticulo();
+        } else if (e.getSource().equals(this.vistaP.btnIngresoArtNuevo)) {
+            VistaArticulo va = new VistaArticulo();
             Articulo art = new Articulo();
-            ControladorArticulo controlArticulo = new ControladorArticulo(va,art);
+            ControladorArticulo controlArticulo = new ControladorArticulo(va, art);
+            controlArticulo.iniciarVista();
 
         }
-       
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
         
 
     }
-   
-    
+
 }

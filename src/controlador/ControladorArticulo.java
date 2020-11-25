@@ -129,6 +129,7 @@ public class ControladorArticulo implements ActionListener {
             Articulo arti = gestorArticulo.BuscarPorFiltro("cod = " + codigo).get(0);
             this.articulo = arti;
             eliminarArticulo();
+            limpiarCamposArticulo();
             cargarArticulosEnTabla();
         } else {
             throw new Exception("Debe seleccionar un artículo que desee eliminar");
@@ -183,7 +184,7 @@ public class ControladorArticulo implements ActionListener {
     }
     
     private void cargarArticulosEnTabla() throws Exception {
-        String col[] = {"Cod.","Nombre","Descrp.", "Stock min.", "Stock Max.", "Stock"};
+        String col[] = {"Cod.", "Nombre", "Descrp.", "Stock min.", "Stock Max.", "Stock"};
         DefaultTableModel tableModel = new DefaultTableModel(col,0);
         vista.tListaArticulos.setModel(tableModel);
         ArrayList<Articulo> artis = gestorArticulo.BuscarPorFiltroConOrden("", "cod", false);
