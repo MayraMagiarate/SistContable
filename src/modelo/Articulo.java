@@ -80,10 +80,4 @@ public class Articulo extends EntidadBasica implements Serializable {
         this.stockMax = strockMax;
     }
 
-    @Override
-    public String toString() {
-        return String.valueOf(cod);
-    }
-    
-    
 }
