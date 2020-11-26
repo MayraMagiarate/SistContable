@@ -14,16 +14,29 @@ import persistencia.InstructorConexion;
  */
 public abstract class GestorGral {
 
-    private Session sesion = null;
-    private Transaction tx = null;
+    private static Session sesion = null;
+    private static Transaction tx = null;
+    
+    protected Session getSession() {
+        Session s = InstructorConexion.getSessionFactory().getCurrentSession();
+        if (!s.isOpen()) {
+            s = InstructorConexion.getSessionFactory().openSession();
+        }
+        if (!s.getTransaction().isActive()) {
+            s.beginTransaction();
+        }
+        return s;
+    }
 
     public void IniciarTransaccion() throws Exception {
         try {
             if (tx == null) {
                 if (sesion == null) {
-                    sesion = InstructorConexion.getSessionFactory().openSession();
+                    sesion = getSession();
                 }
-                tx = sesion.beginTransaction();
+                if (tx == null) {
+                    tx = sesion.getTransaction();
+                }
             }
         } catch (Exception e) {
             throw new Exception(e.getMessage());
@@ -36,8 +49,6 @@ public abstract class GestorGral {
             if (tx != null) {
                 tx.commit();
                 tx = null;
-                sesion.close();
-                sesion = null;
             }
         } catch (Exception e) {
             throw new Exception(e.getMessage());
@@ -50,8 +61,6 @@ public abstract class GestorGral {
             if (tx != null) {
                 tx.rollback();
                 tx = null;
-                sesion.close();
-                sesion = null;
             }
         } catch (Exception e) {
             throw new Exception(e.getMessage());
@@ -89,9 +98,8 @@ public abstract class GestorGral {
 
     protected Object BuscarPorId(Class clase, long id) throws Exception {
         try {
-            Session se = InstructorConexion.getSessionFactory().openSession(); // inicio Sesion
+            Session se = getSession(); // inicio Sesion
             Object object = se.get(clase, id); // creo un objeto donde se carga lo que le paso por parametro, que seria otro objeto.
-            se.close();
             return object;
         } catch (Exception e) {
             throw new Exception(e.getMessage());
@@ -101,11 +109,10 @@ public abstract class GestorGral {
 
     protected List<Object> BuscarTodos(Class clase) throws Exception {
         try {
-            Session se = InstructorConexion.getSessionFactory().openSession(); // inicio Sesion
+            Session se = getSession(); // inicio Sesion
             List objetos = se.createCriteria(clase).list();
             /* createCriteria es un metodo que utiliza hql (lenguaje de queries de hibernate)
                                                                                             equivale al FROM de un SELECT * FROM */
-            se.close();
             return objetos;
         } catch (Exception e) {
             throw new Exception(e.getMessage());
@@ -114,11 +121,10 @@ public abstract class GestorGral {
     
     protected List<Object> BuscarPorFiltro(Class clase, String filtro) throws Exception {
         try {
-            Session se = InstructorConexion.getSessionFactory().openSession(); // inicio Sesion
+            Session se = getSession(); // inicio Sesion
             Criteria cr = se.createCriteria(clase);
             cr.add(Restrictions.sqlRestriction(filtro));
             List objetos = cr.list();
-            se.close();
             return objetos;
         } catch (Exception e) {
             throw new Exception(e.getMessage());
@@ -127,7 +133,7 @@ public abstract class GestorGral {
     
     protected List<Object> BuscarPorFiltroConOrden(Class clase, String filtro, String columnaOrden, boolean ordenDescendente) throws Exception {
         try {
-            Session se = InstructorConexion.getSessionFactory().openSession(); // inicio Sesion
+            Session se = getSession(); // inicio Sesion
             Criteria cr = se.createCriteria(clase);
             cr.add(Restrictions.sqlRestriction(filtro));
             if (ordenDescendente == false) {
@@ -136,7 +142,6 @@ public abstract class GestorGral {
                 cr.addOrder(Order.desc(columnaOrden));
             }
             List objetos = cr.list();
-            se.close();
             return objetos;
         } catch (Exception e) {
             throw new Exception(e.getMessage());

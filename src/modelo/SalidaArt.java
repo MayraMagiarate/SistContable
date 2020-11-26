@@ -23,12 +23,21 @@ public class SalidaArt extends EntidadBasica implements Serializable{
     private int cantidad;
     @Column
     private double precioTotal;
-    @ManyToOne(cascade=CascadeType.PERSIST, optional = false)
+    @ManyToOne(cascade=CascadeType.ALL, optional = false)
     @JoinColumn(name="salidaId")
     private Salida salida;
-    @ManyToOne(cascade=CascadeType.PERSIST, optional = false)
+    @ManyToOne(cascade=CascadeType.ALL, optional = false)
     @JoinColumn(name="articuloId")
     private Articulo articulo;
+    private String sistema;
+
+    public String getSistema() {
+        return sistema;
+    }
+
+    public void setSistema(String sistema) {
+        this.sistema = sistema;
+    }
 
     public SalidaArt() {
     }

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -26,9 +27,9 @@ public class Salida extends EntidadBasica implements Serializable{
     @Temporal(TemporalType.DATE)
     @Column
     private Calendar fecha;
-    @Column
+    @Column(unique = true)
     private String factura;
-    @OneToMany(mappedBy = "salida")
+    @OneToMany(mappedBy = "salida", cascade = CascadeType.ALL)
     private List<SalidaArt> ventas;
 
     public Salida() {

@@ -40,28 +40,27 @@ public class ControladorPrincipal implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         try {
             if (e.getSource().equals(this.vistaP.btnVentas)) {
-            VistaVentas vv = new VistaVentas();
-            Salida venta = new Salida();
-            ControladorSalida controlSalida = new ControladorSalida(vv, venta);
-            //controlSalida.in
+                VistaVentas vv = new VistaVentas();
+                Salida venta = new Salida();
+                ControladorSalida controlSalida = new ControladorSalida(vv, venta);
+                controlSalida.iniciarVista();
 
-        } else if (e.getSource().equals(this.vistaP.btnIngresoMerca)) {
-            VistaEntradas vi = new VistaEntradas();
-            Entrada ea = new Entrada();
-            ControladorEntrada controlEntradas = new ControladorEntrada(vi, ea);
-            controlEntradas.iniciarVista();
+            } else if (e.getSource().equals(this.vistaP.btnIngresoMerca)) {
+                VistaEntradas vi = new VistaEntradas();
+                Entrada ea = new Entrada();
+                ControladorEntrada controlEntradas = new ControladorEntrada(vi, ea);
+                controlEntradas.iniciarVista();
 
-        } else if (e.getSource().equals(this.vistaP.btnIngresoArtNuevo)) {
-            VistaArticulo va = new VistaArticulo();
-            Articulo art = new Articulo();
-            ControladorArticulo controlArticulo = new ControladorArticulo(va, art);
-            controlArticulo.iniciarVista();
+            } else if (e.getSource().equals(this.vistaP.btnIngresoArtNuevo)) {
+                VistaArticulo va = new VistaArticulo();
+                Articulo art = new Articulo();
+                ControladorArticulo controlArticulo = new ControladorArticulo(va, art);
+                controlArticulo.iniciarVista();
 
-        }
+            }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-        
 
     }
 
