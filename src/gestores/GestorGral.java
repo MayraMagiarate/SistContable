@@ -27,17 +27,20 @@ public abstract class GestorGral {
         }
         return s;
     }
+    
+    protected Transaction getTransaction() {
+        Session s = getSession();
+        Transaction tx = s.getTransaction();
+        if (!tx.isActive()) {
+            tx.begin();
+        }
+        return tx;
+    }
 
     public void IniciarTransaccion() throws Exception {
         try {
-            if (tx == null) {
-                if (sesion == null) {
-                    sesion = getSession();
-                }
-                if (tx == null) {
-                    tx = sesion.getTransaction();
-                }
-            }
+            sesion = getSession();
+            tx = getTransaction();
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
@@ -46,9 +49,8 @@ public abstract class GestorGral {
 
     public void EjecutarTransaccion() throws Exception {
         try {
-            if (tx != null) {
+            if (tx.isActive()) {
                 tx.commit();
-                tx = null;
             }
         } catch (Exception e) {
             throw new Exception(e.getMessage());
@@ -58,9 +60,8 @@ public abstract class GestorGral {
 
     public void DeshacerTransaccion() throws Exception {
         try {
-            if (tx != null) {
+            if (tx.isActive()) {
                 tx.rollback();
-                tx = null;
             }
         } catch (Exception e) {
             throw new Exception(e.getMessage());
